@@ -26,7 +26,7 @@ class YoutubeBottomSheet extends StatelessWidget {
 
   /* 바텀시트 아이템 버튼 */
   Widget _itemButton(
-      {String icon, double iconSize, String label, Function onTap}) {
+      {String iconPath, double iconSize, String label, Function onTap}) {
     return InkWell(
       onTap: onTap,
       child: Row(
@@ -42,7 +42,7 @@ class YoutubeBottomSheet extends StatelessWidget {
               child: Container(
                 width: iconSize,
                 height: iconSize,
-                child: SvgPicture.asset("assets/svg/icons/$icon"),
+                child: SvgPicture.asset("assets/svg/icons/$iconPath"),
               ),
             ),
           ),
@@ -69,7 +69,7 @@ class YoutubeBottomSheet extends StatelessWidget {
             _header(),
             SizedBox(height: 10),
             _itemButton(
-                icon: "upload.svg",
+                iconPath: "upload.svg",
                 iconSize: 17,
                 label: "동영상 업로드",
                 onTap: () {
@@ -77,7 +77,7 @@ class YoutubeBottomSheet extends StatelessWidget {
                 }),
             SizedBox(height: 10),
             _itemButton(
-                icon: "broadcast.svg",
+                iconPath: "broadcast.svg",
                 iconSize: 25,
                 label: "실시간 스트리밍 시작",
                 onTap: () {
