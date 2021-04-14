@@ -81,7 +81,9 @@ class Snippet {
         thumbnails: Thumbnails.fromJson(json["thumbnails"]),
         channelTitle: json["channelTitle"],
         liveBroadcastContent: json["liveBroadcastContent"],
-        publishTime: DateTime.parse(json["publishTime"]),
+        publishTime: json["publishTime"] == null
+            ? DateTime.now() // TODO: publishTime 데이터가 없을경우 어떻게 처리할지 정해야함
+            : DateTime.parse(json["publishTime"]),
       );
 
   Map<String, dynamic> toJson() => {
