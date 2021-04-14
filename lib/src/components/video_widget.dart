@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:youtube_clone_app/src/models/video.dart';
 
 class VideoWidget extends StatelessWidget {
-  const VideoWidget({Key key}) : super(key: key);
+  final Video video;
+  const VideoWidget({Key key, this.video}) : super(key: key);
 
   Widget _thumbnail() {
     return Container(
       height: 250,
-      color: Colors.grey.withOpacity(0.5), // TODO: NetWork로 대체
+      color: Colors.grey.withOpacity(0.5),
+      child: Image.network(video.snippet.thumbnails.medium.url,
+          fit: BoxFit.fitWidth),
     );
   }
 
@@ -20,7 +24,7 @@ class VideoWidget extends StatelessWidget {
             radius: 30,
             backgroundColor: Colors.grey.withOpacity(0.5),
             backgroundImage: Image.network(
-                    "https://yt3.ggpht.com/ytc/AAUvwngEehZhnDTCZpvgqOgN2h0j-JXAI8d7SbODofu9gA=s88-c-k-c0x00ffffff-no-rj")
+                    "https://yt3.ggpht.com/ytc/AAUvwnhb59h3DMSl8IIcBzBLbVQWXx3nBPxdF6XBtpPG=s176-c-k-c0x00ffffff-no-rj")
                 .image,
           ),
           SizedBox(
@@ -34,7 +38,7 @@ class VideoWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        "아타 유튜브 다시 보기아타 유튜브 다시 보기아타 유튜브 다시 보기",
+                        video.snippet.title,
                         maxLines: 2,
                       ),
                     ),
@@ -60,7 +64,8 @@ class VideoWidget extends StatelessWidget {
                     ),
                     Text(" · "),
                     Text(
-                      "2021-04-14",
+                      DateFormat("yyyy-MM-dd")
+                          .format(video.snippet.publishTime),
                       style: TextStyle(
                           fontSize: 12, color: Colors.black.withOpacity(0.6)),
                     ),

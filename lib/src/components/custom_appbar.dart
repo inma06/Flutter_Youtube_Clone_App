@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
   Widget _logo() {
     return Container(
       child: Image.asset(
-        "assets/images/logo.png",
+        "assets/images/logo_hong.png",
         width: 130,
       ),
     );
@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget {
         CircleAvatar(
           backgroundColor: Colors.grey.withOpacity(0.5),
           backgroundImage: Image.network(
-                  "https://yt3.ggpht.com/ytc/AAUvwngEehZhnDTCZpvgqOgN2h0j-JXAI8d7SbODofu9gA=s88-c-k-c0x00ffffff-no-rj")
+                  "https://yt3.ggpht.com/ytc/AAUvwnhb59h3DMSl8IIcBzBLbVQWXx3nBPxdF6XBtpPG=s176-c-k-c0x00ffffff-no-rj")
               .image,
         )
       ],
