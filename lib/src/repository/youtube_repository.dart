@@ -47,7 +47,6 @@ class YoutubeRepository extends GetConnect {
     if (response.status.hasError) {
       return Future.error(response.statusText);
     } else {
-      print(response.body["items"].toString());
       if (response.body["items"] != null && response.body["items"].length > 0) {
         Map<String, dynamic> data = response.body["items"][0];
         return Youtuber.fromJson(data);
