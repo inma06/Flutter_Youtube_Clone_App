@@ -28,7 +28,7 @@ class YoutubeRepository extends GetConnect {
 
   Future<Statistics> getVideoInfoById(String videoId) async {
     String url =
-        "/youtube/v3/videos?part=statistics&key=AIzaSyBMemiZMtzw3OAASdxSK6yoV-1UISvGncg&id=$videoId"; // TODO: API KEY 외부캡슐화작업해야함.
+        "/youtube/v3/videos?part=statistics&key=AIzaSyBMemiZMtzw3OAASdxSK6yoV-1UISvGncg&id=$videoId";
     final response = await get(url);
     if (response.status.hasError) {
       return Future.error(response.statusText);
@@ -42,11 +42,12 @@ class YoutubeRepository extends GetConnect {
 
   Future<Youtuber> getYoutuberInfoById(String channelId) async {
     String url =
-        "youtube/v3/channels?part=statistics,snippet&key=AIzaSyBMemiZMtzw3OAASdxSK6yoV-1UISvGncg&id=$channelId"; // TODO: API KEY 외부캡슐화작업해야함.
+        "/youtube/v3/channels?part=statistics,snippet&key=AIzaSyBMemiZMtzw3OAASdxSK6yoV-1UISvGncg&id=$channelId"; // TODO: API KEY 외부캡슐화작업해야함.
     final response = await get(url);
     if (response.status.hasError) {
       return Future.error(response.statusText);
     } else {
+      print(response.body["items"].toString());
       if (response.body["items"] != null && response.body["items"].length > 0) {
         Map<String, dynamic> data = response.body["items"][0];
         return Youtuber.fromJson(data);

@@ -74,17 +74,16 @@ class Snippet {
   DateTime publishTime;
 
   factory Snippet.fromJson(Map<String, dynamic> json) => Snippet(
-        publishedAt: DateTime.parse(json["publishedAt"]),
-        channelId: json["channelId"],
-        title: json["title"],
-        description: json["description"],
-        thumbnails: Thumbnails.fromJson(json["thumbnails"]),
-        channelTitle: json["channelTitle"],
-        liveBroadcastContent: json["liveBroadcastContent"],
-        publishTime: json["publishTime"] == null
-            ? DateTime.now() // TODO: publishTime 데이터가 없을경우 어떻게 처리할지 정해야함
-            : DateTime.parse(json["publishTime"]),
-      );
+      publishedAt: DateTime.parse(json["publishedAt"]),
+      channelId: json["channelId"],
+      title: json["title"],
+      description: json["description"],
+      thumbnails: Thumbnails.fromJson(json["thumbnails"]),
+      channelTitle: json["channelTitle"],
+      liveBroadcastContent: json["liveBroadcastContent"],
+      publishTime: json["publishTime"] == null
+          ? DateTime.now()
+          : DateTime.parse(json["publishTime"]));
 
   Map<String, dynamic> toJson() => {
         "publishedAt": publishedAt.toIso8601String(),

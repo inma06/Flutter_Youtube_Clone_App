@@ -6,7 +6,6 @@ import 'package:youtube_clone_app/src/models/video.dart';
 
 class VideoWidget extends StatefulWidget {
   final Video video;
-
   const VideoWidget({Key key, this.video}) : super(key: key);
 
   @override
@@ -37,6 +36,7 @@ class _VideoWidgetState extends State<VideoWidget> {
       child: Row(
         children: [
           Obx(
+            // 채널 썸네일
             () => CircleAvatar(
               radius: 30,
               backgroundColor: Colors.grey.withOpacity(0.5),
@@ -45,7 +45,7 @@ class _VideoWidgetState extends State<VideoWidget> {
             ),
           ),
           SizedBox(
-            width: 10,
+            width: 15,
           ),
           Expanded(
             child: Column(
@@ -69,12 +69,14 @@ class _VideoWidgetState extends State<VideoWidget> {
                 Row(
                   children: [
                     Text(
+                      // 채널명
                       "${widget.video.snippet.channelTitle}",
                       style: TextStyle(
                           fontSize: 12, color: Colors.black.withOpacity(0.8)),
                     ),
                     Text(" • "),
                     Obx(
+                      // 조회수
                       () => Text(
                         _videoController.viewCountString,
                         style: TextStyle(
@@ -83,6 +85,8 @@ class _VideoWidgetState extends State<VideoWidget> {
                     ),
                     Text(" • "),
                     Text(
+                      // 영상등록일
+
                       DateFormat("yyyy-MM-dd")
                           .format(widget.video.snippet.publishTime),
                       style: TextStyle(

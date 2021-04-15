@@ -28,7 +28,7 @@ class VideoController extends GetxController {
 
   String get youtuberThumbnailUrl {
     if (youtuber.value.snippet == null)
-      return "https://raw.githubusercontent.com/inma06/cafe-in-website/main/img/bak/default_profile_image.jpg";
-    return youtuber.value.snippet.thumbnails.thumbnailsDefault.url;
+      return "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtYhPD%2Fbtq2CEI9fZo%2F2nBLbQk2MPCeZ4lgmr9OVk%2Fimg.png";
+    return youtuber.value.snippet.thumbnails.medium.url;
   }
 }
