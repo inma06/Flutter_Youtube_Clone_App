@@ -8,7 +8,6 @@ import 'package:youtube_clone_app/src/repository/youtube_repository.dart';
 class VideoController extends GetxController {
   Video video;
   VideoController({this.video});
-
   Rx<Statistics> statistics = Statistics().obs;
   Rx<Youtuber> youtuber = Youtuber().obs;
 

@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:youtube_clone_app/src/controller/youtube_datail_controller.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class YoutubeDetail extends StatelessWidget {
+class YoutubeDetail extends GetView<YoutubeDetailController> {
   const YoutubeDetail({Key key}) : super(key: key);
 
   Widget _titleZone() {
@@ -12,24 +17,25 @@ class YoutubeDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "아타나시오 영상 다시보기",
+            // 영상제목
+            controller.title,
             style: TextStyle(fontSize: 15),
           ),
           Row(
             children: [
-              Text("조회수 1000회",
+              Text(controller.viewCount,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.black.withOpacity(0.5),
                   )),
               Text(" · "),
-              Text("2021-02-13",
+              Text(controller.publishTime,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.black.withOpacity(0.5),
                   )),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -39,7 +45,7 @@ class YoutubeDetail extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Text(
-        "안녕하세요 개발하는 아타나시오 입니다.!!",
+        controller.description,
         style: TextStyle(
           fontSize: 14,
         ),
@@ -60,8 +66,8 @@ class YoutubeDetail extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buttonOne("like.svg", "1000"),
-        _buttonOne("dislike.svg", "0"),
+        _buttonOne("like.svg", controller.likeCount),
+        _buttonOne("dislike.svg", controller.dislikeCount),
         _buttonOne("share.svg", "공유"),
         _buttonOne("save.svg", "저장"),
       ],
@@ -75,9 +81,7 @@ class YoutubeDetail extends StatelessWidget {
         CircleAvatar(
           radius: 30,
           backgroundColor: Colors.grey.withOpacity(0.5),
-          backgroundImage: Image.network(
-                  "https://yt3.ggpht.com/ytc/AAUvwnhb59h3DMSl8IIcBzBLbVQWXx3nBPxdF6XBtpPG=s176-c-k-c0x00ffffff-no-rj")
-              .image,
+          backgroundImage: Image.network(controller.youtuberThumbnailUrl).image,
         ),
         SizedBox(
           width: 15,
@@ -87,11 +91,11 @@ class YoutubeDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "채널명채널명",
+                controller.channelTitle,
                 style: TextStyle(fontSize: 18),
               ),
               Text(
-                "구독자 100000",
+                "구독자 ${controller.subscriberCount}",
                 style: TextStyle(
                     fontSize: 14, color: Colors.black.withOpacity(0.6)),
               ),
@@ -132,15 +136,41 @@ class YoutubeDetail extends StatelessWidget {
     );
   }
 
+  /* 유튜브 영상 부분 */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
-          Container(
-            height: 250,
-            color: Colors.grey.withOpacity(0.5),
+          YoutubePlayer(
+            controller: controller.youtubePlayerController,
+            showVideoProgressIndicator: true,
+            progressIndicatorColor: Colors.blueAccent,
+            topActions: <Widget>[
+              const SizedBox(width: 8.0),
+              Expanded(
+                child: Text(
+                  controller.youtubePlayerController.metadata.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                  size: 25.0,
+                ),
+                onPressed: () {},
+              ),
+            ],
+            onReady: () {},
+            onEnded: (data) {},
           ),
           Expanded(
             child: _description(),

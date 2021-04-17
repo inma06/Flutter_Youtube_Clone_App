@@ -39,9 +39,8 @@ class CustomAppBar extends StatelessWidget {
         ),
         CircleAvatar(
           backgroundColor: Colors.grey.withOpacity(0.5),
-          backgroundImage: Image.network(
-                  "https://raw.githubusercontent.com/inma06/cafe-in-website/main/img/bak/default_profile_image.jpg")
-              .image,
+          backgroundImage: ExactAssetImage(
+              "assets/images/default_thumbnail.png"), // TODO : 로그인사용자 프로필 이미지
         )
       ],
     );

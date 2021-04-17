@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:youtube_clone_app/src/app.dart';
 import 'package:youtube_clone_app/src/binding/init_binding.dart';
 import 'package:youtube_clone_app/src/components/youtube_detail.dart';
+import 'package:youtube_clone_app/src/controller/youtube_datail_controller.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,7 +26,11 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => App()),
-        GetPage(name: "/detail/:videoId", page: () => YoutubeDetail()),
+        GetPage(
+            name: "/detail/:videoId",
+            page: () => YoutubeDetail(),
+            binding: BindingsBuilder(() => Get.lazyPut<YoutubeDetailController>(
+                () => YoutubeDetailController()))),
       ],
     );
   }

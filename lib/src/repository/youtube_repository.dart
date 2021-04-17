@@ -20,7 +20,7 @@ class YoutubeRepository extends GetConnect {
     /* TODO : 채널 아이디 */
     String url = "/youtube/v3/search?"
         "part=snippet&"
-        "channelId=UClLb6viO__RB_ahltAV486g&"
+        "channelId=UCbMGBIayK26L4VaFrs5jyBw&"
         "maxResults=10&"
         "order=date&"
         "type=video&"

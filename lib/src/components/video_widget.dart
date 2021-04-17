@@ -29,7 +29,7 @@ class _VideoWidgetState extends State<VideoWidget> {
         Container(
           color: Colors.grey.withOpacity(0.5),
           child: CachedNetworkImage(
-            imageUrl: widget.video.snippet.thumbnails.medium.url,
+            imageUrl: widget.video.snippet.thumbnails.high.url,
             placeholder: (context, url) => Container(
               height: 230,
               child: Center(child: CircularProgressIndicator()),

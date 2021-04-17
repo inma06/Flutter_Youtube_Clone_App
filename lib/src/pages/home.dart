@@ -27,7 +27,8 @@ class Home extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       //page route
-                      Get.toNamed("/detail/239587"); // 영상클릭시 디테일 라우터로 이동
+                      Get.toNamed(
+                          "/detail/${controller.youtubeResult.value.items[index].id.videoId}"); // 영상클릭시 디테일 라우터로 이동
                     },
                     child: VideoWidget(
                         video: controller.youtubeResult.value.items[index]),
