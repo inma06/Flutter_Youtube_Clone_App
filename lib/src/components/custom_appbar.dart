@@ -53,7 +53,7 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _logo(), // 로고
-        _actions(), // 알람, 서치, 프로필사진
+        // _actions(), // 알람, 서치, 프로필사진
       ],
     ));
   }

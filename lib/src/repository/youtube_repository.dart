@@ -18,9 +18,10 @@ class YoutubeRepository extends GetConnect {
 
   Future<YoutubeVideoResult> loadVideos(String nextPageToken) async {
     /* TODO : 채널 아이디 */
+    String channelId = "UCzMHloI_qrfCO0Wp4s7UC_Q";
     String url = "/youtube/v3/search?"
         "part=snippet&"
-        "channelId=UCbMGBIayK26L4VaFrs5jyBw&"
+        "channelId=$channelId&"
         "maxResults=10&"
         "order=date&"
         "type=video&"
